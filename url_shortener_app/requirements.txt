@@ -1,0 +1,14 @@
+asgiref==3.7.2
+backports.zoneinfo==0.2.1
+certifi==2023.5.7
+charset-normalizer==3.2.0
+Django==4.2.3
+idna==3.4
+psycopg2==2.9.6
+psycopg2-binary==2.9.6
+pyshorteners==1.0.1
+python-dotenv==1.0.0
+requests==2.31.0
+sqlparse==0.4.4
+typing-extensions==4.7.1
+urllib3==2.0.3
