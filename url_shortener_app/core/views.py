@@ -18,7 +18,6 @@ def home(request, **kwargs):
 
 def login_required(request):
     return home(request, login_required=True)
-    # HttpResponseRedirect(reverse('core:home', kwargs={'login_required': True}))
 
 
 class RegisterView(FormView):
