@@ -5,20 +5,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8000:8000
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+    command: ["./wait-for-it.sh"]
   db:
     image: postgres
     volumes:
       - postgresdb:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test_url_shortener
+      - POSTGRES_USER=user1
+      - POSTGRES_PASSWORD=123
     ports:
       - 5432:5432
 

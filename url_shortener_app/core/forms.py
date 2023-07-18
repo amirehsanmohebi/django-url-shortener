@@ -99,5 +99,5 @@ class ShortenUrlForm(forms.Form):
         try:
             validate(url)
         except ValidationError as e:
-            raise ValidationError('Entered URL does not exist!', code='invalid')
+            raise ValidationError('Entered URL is not Valid!', code='invalid')
         return url

@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-!9$nuu09$=jspw)6za*eo+klqz*h8fmu7#-d0g1eqc+e5-(!9z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 # Application definition
 
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'url_shortener_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DATABASE_NAME'),
         'USER': os.environ.get('DATABASE_USER_NAME'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),

@@ -73,7 +73,7 @@ class ShortenUrlView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         url = form.cleaned_data['url']
         shortener = pyshorteners.Shortener()
-        shortened_url = shortener.tinyurl.short(url)
+        shortened_url = shortener.osdb.short(url)
         context = {'shortened_url': shortened_url,
                    'url': url}
         return render(self.request, 'home.html', context=context)
