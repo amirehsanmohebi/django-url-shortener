@@ -11,4 +11,5 @@ RUN pip install -r requirements.txt
 ADD . /code/
 RUN mkdir /code/staticfiles
 RUN chmod +x /code/wait-for-it.sh
+RUN chmod +x /code/wait-for-it-dev.sh
 EXPOSE 8000

@@ -24,6 +24,16 @@ services:
       - 5432:5432
     networks:
       - django-network
+  nginx:
+    build: ../nginx
+    volumes:
+      - static_volume:/code/staticfiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+    networks:
+      - django-network
 networks:
   django-network:
     name: django-network
