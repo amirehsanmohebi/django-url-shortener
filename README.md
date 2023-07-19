@@ -11,7 +11,7 @@ url-shortener is a django app that shortens the urls that it receives using pysh
 * Gunicorn is used for production side to act as WSGI HTTP Server .
 * Nginx is also used for production side to act as a webserver for static files and a reverse proxy for the django .
 
-** The project is also Dockerized, meaning that all the components mentioned are communicating with each other through networking. all the docker files are inside the project repo.
+* The project is also Dockerized, meaning that all the components mentioned are communicating with each other through networking. all the docker files are inside the project repo.
 
 
 
@@ -304,8 +304,8 @@ docker-compose -f docker-compose.dev.yml up -d --build
 #### This is the main app that handles authentication and also provides the url shortening API
 
 ### models.py
-#### This file contains the only model used in the project called User. it inherits from the **AbstractBaseUser** and **PermissionsMixin** classes inorder to create a custom User model for the project.
-#### There is a manager class for the User class called **UserManager**, it is the interface through which database query operations are provided to User model
+###### This file contains the only model used in the project called User. it inherits from the **AbstractBaseUser** and **PermissionsMixin** classes inorder to create a custom User model for the project.
+###### There is a manager class for the User class called **UserManager**, it is the interface through which database query operations are provided to User model
 User model class:
 <pre><code>
 class User(AbstractBaseUser, PermissionsMixin):
@@ -475,15 +475,15 @@ class ShortenUrlForm(forms.Form):
 - **change_area** [This function removes agent's id from previous area's list in redis and adds agent's id to the new area's list in redis, it works directly with redis]
 
 ### views.py
-#### This file contains the necessary view functions and GenericView classes that are used to respond to each url.
-####  redirect_home function is used to redirect user to the homepage, it uses reverse shortcut to call the home url.
+###### This file contains the necessary view functions and GenericView classes that are used to respond to each url.
+###### redirect_home function is used to redirect user to the homepage, it uses reverse shortcut to call the home url.
 redirect_home function:
 <pre><code>
 def redirect_home(request):
     return HttpResponseRedirect(reverse('core:home'))
 </code></pre>
 
-####  home function is used to load homepage html file with the given parameters', it uses the render shortcut to load a template with the option to send context data
+###### home function is used to load homepage html file with the given parameters', it uses the render shortcut to load a template with the option to send context data
 home function:
 <pre><code>
 def home(request, **kwargs):
@@ -491,21 +491,21 @@ def home(request, **kwargs):
     return render(request, 'home.html', context={'login_required': user_login_required})
 </code></pre>
 
-####  login_required function is used as a workaround to handle the redirection of users that are not logged in which is being called by the LoginRequiredMixin Class that is used as a parent for ShortenUrlView generic View. it just calls the home function with extra kwarg
+###### login_required function is used as a workaround to handle the redirection of users that are not logged in which is being called by the LoginRequiredMixin Class that is used as a parent for ShortenUrlView generic View. it just calls the home function with extra kwarg
 login_required function:
 <pre><code>
 def login_required(request):
     return home(request, login_required=True)
 </code></pre>
 
-####  logout_view function is used to log out and redirect the user to the home page.
+###### logout_view function is used to log out and redirect the user to the home page.
 logout_view function:
 <pre><code>
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('core:home'))
 </code></pre>
-####  RegisterView class is used to get registration data from the user and create the user if the data that was sent is valid, if the data is invalid, it will render home template  with form errors
+###### RegisterView class is used to get registration data from the user and create the user if the data that was sent is valid, if the data is invalid, it will render home template  with form errors
 RegisterView class:
 <pre><code>
 class RegisterView(FormView):
@@ -528,7 +528,7 @@ class RegisterView(FormView):
 
 </code></pre>
 
-####  LoginView class is used to get login data from the user and authenticate the user if the data that was sent is valid, if the data is invalid, it will render home template  with form errors
+###### LoginView class is used to get login data from the user and authenticate the user if the data that was sent is valid, if the data is invalid, it will render home template  with form errors
 RegisterView class:
 <pre><code>
 class LoginView(FormView):
@@ -553,7 +553,7 @@ class LoginView(FormView):
         return render(self.request, 'home.html', {'login_form': form})
 </code></pre>
 
-####  ShortenUrlView class is used to get the desired url from the user and shorten it using pyshortener object, it inherits from **LoginRequiredMixin** class which guarantees that the users should be logged in inorder to use the View class, it will render home template with errors if the entered url is not valid
+###### ShortenUrlView class is used to get the desired url from the user and shorten it using pyshortener object, it inherits from **LoginRequiredMixin** class which guarantees that the users should be logged in inorder to use the View class, it will render home template with errors if the entered url is not valid
 ShortenUrlView class:
 <pre><code>
 class ShortenUrlView(LoginRequiredMixin, FormView):
