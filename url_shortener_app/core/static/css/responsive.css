@@ -152,7 +152,7 @@ right: -221px;
 width: 30%;
    }
 
-.login_text { width: 10%; }
+.login_text { width: 15%; }
 .logo { width: 20%; }
 .best_taital { font-size: 60px; }
 .box_main { width: 65%; }
@@ -218,7 +218,7 @@ width: 30%;
          padding-left: 15px;
     }
 
-.login_text { display: none; }
+.login_text { width: 15%; }
 .best_taital { font-size: 54px; }
 .box_main { width: 100%; }
 .there_text { width: 100%; font-size: 14px; }
@@ -290,7 +290,7 @@ padding: 126px 40px;
     width: 55%;
 }
 
-.login_text { display: none; }
+.login_text { width: 20%; }
 .best_taital { font-size: 40px; }
 .box_main { width: 100%; }
 .there_text { width: 100%; font-size: 14px; }
@@ -402,7 +402,7 @@ ul.link li {
 
 
 
-.login_text { display: none; }
+.login_text { width: 32%; }
 .best_taital { font-size: 24px; }
 .box_main { width: 100%; }
 .there_text { width: 100%; font-size: 14px; }

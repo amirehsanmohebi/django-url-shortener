@@ -8,4 +8,5 @@ do
   sleep 5
 done
 python3 manage.py migrate
-python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py collectstatic
+gunicorn url_shortener_app.wsgi:application --bind 0.0.0.0:8000 --workers=4

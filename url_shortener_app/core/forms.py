@@ -77,6 +77,9 @@ class LoginForm(forms.ModelForm):
 
     def clean_password(self):
         password = self.cleaned_data['password']
+        mobile_number = self.cleaned_data.get('mobile_number', None)
+        if not mobile_number:
+            return password
         user = User.objects.get(mobile_number=self.cleaned_data['mobile_number'])
         if not user.check_password(password):
             raise ValidationError('Password is incorrect.', code='invalid')
